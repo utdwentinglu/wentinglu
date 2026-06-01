@@ -92,7 +92,28 @@
     }
 
     .hero {
-      padding: 96px 0 74px;
+      position: relative;
+      padding: 112px 0 88px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(2, 6, 23, 0.94) 0%, rgba(2, 6, 23, 0.76) 48%, rgba(2, 6, 23, 0.38) 100%),
+        url("images/bg_1.png") center right / cover no-repeat;
+      opacity: 0.92;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.18), transparent 34%);
+      z-index: -1;
     }
 
     .eyebrow {
@@ -125,7 +146,7 @@
     }
 
     .hero-copy {
-      max-width: 820px;
+      max-width: 760px;
       color: var(--muted);
       font-size: clamp(1.05rem, 2vw, 1.27rem);
       margin: 0;
@@ -223,6 +244,32 @@
     }
 
     .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .profile-photo-card {
+      overflow: hidden;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-content {
       display: grid;
       gap: 18px;
     }
@@ -342,6 +389,7 @@
 
     @media (max-width: 860px) {
       .hero-stats,
+      .about-grid,
       .grid.two,
       .grid.three {
         grid-template-columns: 1fr;
@@ -366,7 +414,11 @@
       }
 
       .hero {
-        padding: 74px 0 58px;
+        padding: 82px 0 62px;
+      }
+
+      .profile-photo {
+        min-height: 320px;
       }
 
       .actions {
@@ -443,23 +495,29 @@
           <p>Product thinker with analytics depth, business ownership, and global customer-facing experience.</p>
         </div>
 
-        <div class="grid two">
-          <article class="card">
-            <h3>Who I Am</h3>
-            <p>
-              I connect product strategy, technical execution, and business analytics. My work has included AI solar
-              surveillance trailer productization, edge-cloud deployment coordination, KPI dashboarding, database design,
-              vendor coordination, product documentation, and client-facing training.
-            </p>
+        <div class="about-grid">
+          <article class="card profile-photo-card">
+            <img class="profile-photo" src="images/215D451C-525C-44C7-8E80-329BBD684499.jpeg" alt="Wenting Lu profile photo" />
           </article>
 
-          <article class="card">
-            <h3>Career Direction</h3>
-            <p>
-              I am targeting Product Manager, Technical Product Manager, Technical Program Manager, and Product Owner roles
-              where I can combine AI, analytics, cloud platforms, and customer-centered execution to build scalable products.
-            </p>
-          </article>
+          <div class="about-content">
+            <article class="card">
+              <h3>Who I Am</h3>
+              <p>
+                I connect product strategy, technical execution, and business analytics. My work has included AI solar
+                surveillance trailer productization, edge-cloud deployment coordination, KPI dashboarding, database design,
+                vendor coordination, product documentation, and client-facing training.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>Career Direction</h3>
+              <p>
+                I am targeting Product Manager, Technical Product Manager, Technical Program Manager, and Product Owner roles
+                where I can combine AI, analytics, cloud platforms, and customer-centered execution to build scalable products.
+              </p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
