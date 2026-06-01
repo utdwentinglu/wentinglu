@@ -8,17 +8,19 @@
 
   <style>
     :root {
-      --bg: #0b1120;
-      --bg-soft: #111827;
-      --card: #162033;
-      --card-soft: #1f2937;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --muted-2: #94a3b8;
-      --accent: #fbbf24;
-      --accent-2: #f59e0b;
-      --line: rgba(255, 255, 255, 0.12);
-      --shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
+      --bg: #eef1f4;
+      --bg-soft: #f8fafc;
+      --card: rgba(255, 255, 255, 0.86);
+      --card-soft: rgba(255, 255, 255, 0.94);
+      --text: #172033;
+      --muted: #4b5565;
+      --muted-2: #6b7280;
+      --accent: #ff9f1c;
+      --accent-2: #ffb347;
+      --accent-3: #f08c00;
+      --line: rgba(22, 32, 51, 0.10);
+      --shadow: 0 18px 45px rgba(22, 32, 51, 0.10);
+      --shadow-orange: 0 18px 48px rgba(255, 159, 28, 0.20);
     }
 
     * {
@@ -33,11 +35,26 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(251, 191, 36, 0.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 28%),
-        linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
+        radial-gradient(circle at 12% 10%, rgba(255, 179, 71, 0.26), transparent 23%),
+        radial-gradient(circle at 88% 9%, rgba(255, 212, 150, 0.28), transparent 22%),
+        radial-gradient(circle at 78% 82%, rgba(255, 159, 28, 0.16), transparent 24%),
+        linear-gradient(135deg, #f9fafb 0%, #eef1f4 48%, #e5e9ee 100%);
       color: var(--text);
       line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.65) 0 1px, transparent 1px),
+        radial-gradient(circle at 75% 20%, rgba(255,159,28,0.35) 0 1px, transparent 1px),
+        radial-gradient(circle at 82% 70%, rgba(255,255,255,0.55) 0 1px, transparent 1px);
+      background-size: 220px 220px, 280px 280px, 340px 340px;
+      opacity: 0.55;
+      z-index: -1;
     }
 
     a {
@@ -53,9 +70,10 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(11, 17, 32, 0.88);
+      background: rgba(248, 250, 252, 0.86);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(22, 32, 51, 0.06);
     }
 
     nav {
@@ -69,7 +87,7 @@
       text-decoration: none;
       font-weight: 850;
       letter-spacing: -0.03em;
-      color: var(--accent);
+      color: var(--accent-3);
       font-size: 1.12rem;
     }
 
@@ -88,7 +106,7 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--accent-3);
     }
 
     .hero {
@@ -114,9 +132,9 @@
       min-height: 620px;
       border-radius: 34px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--card);
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 159, 28, 0.22);
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.62));
+      box-shadow: var(--shadow-orange);
     }
 
     .hero-visual img {
@@ -132,7 +150,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.08), rgba(2, 6, 23, 0.32));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.18)),
+        radial-gradient(circle at 82% 18%, rgba(255, 179, 71, 0.26), transparent 28%);
       pointer-events: none;
     }
 
@@ -141,9 +161,9 @@
       gap: 10px;
       align-items: center;
       padding: 8px 13px;
-      border: 1px solid rgba(251, 191, 36, 0.24);
-      background: rgba(251, 191, 36, 0.08);
-      color: #fde68a;
+      border: 1px solid rgba(255, 159, 28, 0.26);
+      background: rgba(255, 159, 28, 0.10);
+      color: var(--accent-3);
       border-radius: 999px;
       font-weight: 800;
       font-size: 0.78rem;
@@ -162,7 +182,7 @@
 
     h1 span,
     .highlight {
-      color: var(--accent);
+      color: var(--accent-3);
     }
 
     .typing-line {
@@ -176,7 +196,7 @@
     }
 
     #typing-animation {
-      color: var(--accent);
+      color: var(--accent-3);
       white-space: nowrap;
     }
 
@@ -218,25 +238,28 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 800;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(22, 32, 51, 0.10);
       color: var(--text);
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      background: rgba(255, 255, 255, 0.78);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      border-color: var(--accent);
+      border-color: rgba(255, 159, 28, 0.34);
+      box-shadow: 0 10px 24px rgba(255, 159, 28, 0.15);
     }
 
     .btn.primary {
-      background: var(--accent);
-      color: #111827;
-      border-color: var(--accent);
+      background: linear-gradient(135deg, #ffb347 0%, #ff9f1c 52%, #ff8c00 100%);
+      color: #ffffff;
+      border-color: rgba(255, 159, 28, 0.36);
+      box-shadow: 0 12px 30px rgba(255, 159, 28, 0.22);
     }
 
     .btn.primary:hover {
-      background: var(--accent-2);
-      border-color: var(--accent-2);
+      background: linear-gradient(135deg, #ffbe5c 0%, #ffa62b 50%, #ff9412 100%);
+      border-color: rgba(255, 159, 28, 0.42);
     }
 
     .hero-stats {
@@ -248,15 +271,16 @@
 
     .stat-card {
       padding: 20px;
-      border: 1px solid var(--line);
-      background: rgba(17, 24, 39, 0.76);
+      border: 1px solid rgba(22, 32, 51, 0.08);
+      background: rgba(255, 255, 255, 0.82);
       border-radius: 22px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 32px rgba(22, 32, 51, 0.07);
+      backdrop-filter: blur(10px);
     }
 
     .stat-card strong {
       display: block;
-      color: var(--accent);
+      color: var(--accent-3);
       font-size: 1.55rem;
       line-height: 1.1;
       margin-bottom: 7px;
@@ -333,16 +357,17 @@
     }
 
     .card {
-      background: rgba(17, 24, 39, 0.80);
-      border: 1px solid var(--line);
+      background: var(--card);
+      border: 1px solid rgba(22, 32, 51, 0.08);
       border-radius: 24px;
       padding: 24px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
 
     .card h3 {
       margin: 0 0 10px;
-      color: var(--accent);
+      color: var(--accent-3);
       font-size: 1.16rem;
       line-height: 1.3;
     }
@@ -368,14 +393,15 @@
       grid-template-columns: 178px 1fr;
       gap: 22px;
       padding: 24px;
-      background: rgba(31, 41, 55, 0.66);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(22, 32, 51, 0.08);
       border-radius: 24px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 36px rgba(22, 32, 51, 0.07);
+      backdrop-filter: blur(10px);
     }
 
     .date {
-      color: var(--accent);
+      color: var(--accent-3);
       font-weight: 900;
       letter-spacing: -0.02em;
     }
@@ -409,15 +435,15 @@
     .pill-list li {
       padding: 9px 12px;
       border-radius: 999px;
-      background: rgba(251, 191, 36, 0.105);
-      border: 1px solid rgba(251, 191, 36, 0.23);
-      color: #fde68a;
+      background: rgba(255, 159, 28, 0.10);
+      border: 1px solid rgba(255, 159, 28, 0.22);
+      color: var(--accent-3);
       font-size: 0.92rem;
       font-weight: 700;
     }
 
     .contact-card a {
-      color: var(--accent);
+      color: var(--accent-3);
       text-decoration: none;
       overflow-wrap: anywhere;
     }
@@ -431,6 +457,7 @@
       border-top: 1px solid var(--line);
       text-align: center;
       color: var(--muted-2);
+      background: rgba(255, 255, 255, 0.35);
     }
 
     footer p {
@@ -544,7 +571,7 @@
               <a class="btn primary" href="Wenting%20Lu_Resume_Latest_TPM.pdf" target="_blank" rel="noopener">View Resume PDF</a>
               <a class="btn" href="resume.html" target="_blank" rel="noopener">View HTML Resume</a>
               <a class="btn" href="https://github.com/utdwentinglu" target="_blank" rel="noopener">GitHub</a>
-              <a class="btn" href="mailto:wenting.lu2024@gmail.com">Email Me</a>
+              <a class="btn" href="mailto:candice.lu0921@gmail.com">Email Me</a>
             </div>
           </div>
 
